@@ -26,15 +26,15 @@ def computers_choice():
     return comp_coordinates
 
 def players_ship():
-    players_ship_row = random.randint(0,8)
-    players_ship_column = random.randint(0,8)
+    players_ship_row = random.randint(1,8) 
+    players_ship_column = random.randint(1,8) 
     players_ship_coordinates = players_ship_row, players_ship_column
     print(players_ship_coordinates)
     return players_ship_coordinates
 
 def computer_ship():
-    computer_ship_row = random.randint(0,8)
-    computer_ship_column = random.randint(0,8)
+    computer_ship_row = random.randint(1,8)
+    computer_ship_column = random.randint(1,8)
     computer_ship_coordinates = computer_ship_row, computer_ship_column
     print(computer_ship_coordinates)
     return computer_ship_coordinates

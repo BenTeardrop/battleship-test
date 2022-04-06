@@ -22,7 +22,7 @@ def computers_choice():
     comp_choice_row = random.randint(0,8)
     comp_choice_column = random.randint(0,8)
     comp_coordinates = comp_choice_row, comp_choice_column
-    for comp_coordinate in comp_coordinates
+    # for comp_coordinate in comp_coordinates
     print(comp_coordinate)
     return comp_coordinates
 

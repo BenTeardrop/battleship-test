@@ -40,10 +40,9 @@ def players_ship():
     return players_ship_coordinates
 
 def computer_ship():
-    # computer_ship_row = random.randint(1,8)
-    # computer_ship_column = random.randint(1,8)
-    # computer_ship_coordinates = computer_ship_row, computer_ship_column
-    computer_ship_coordinates = 2, 3
+    computer_ship_row = random.randint(1,8)
+    computer_ship_column = random.randint(1,8)
+    computer_ship_coordinates = computer_ship_row, computer_ship_column
     print(computer_ship_coordinates)
     return computer_ship_coordinates
 
@@ -64,6 +63,8 @@ def players_turn(players_shot, computer_coordinates):
             break
         else:
             print("miss!!")
+
+            
 print_board(board)
 players_shot = players_choice()  
 computer_coordinates = computer_ship()

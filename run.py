@@ -85,7 +85,7 @@ def players_turn(players_shot, computer_coordinates):
     score_max = 5
     while (score < 5):
     
-        if players_shot == computer_coordinates:
+        if players_shot in comp_coordinates:
             score += 1
             print("one ship Down!")
         elif score == 5:
@@ -102,8 +102,8 @@ players_shot = players_choice()
 computer_coordinates = computer_ship()
 computer_shot = computers_choice()
 players_coordinate = players_ship()
-generate_ship_coordinates()
-players_turn(players_shot, computer_coordinates)
+comp_coordinates = generate_ship_coordinates()
+players_turn(players_shot, comp_coordinates)
 
 
 

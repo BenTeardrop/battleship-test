@@ -2,19 +2,32 @@ import random
 
 if __name__ == "__main__":
     print('Battleship')
-    
-#initializing board
+
 board = []
 
 for x in range(5):
     board.append(["O"] * 5)
 
 def print_board(board):
+    """
+    prints the board
+    """
     for row in board:
         print (" ".join(row))
 
+def generate_random_coordinate():
+    """
+    Generates random coordinates
+    """
+    row = random.randint(1,5)
+    column = random.randint(1,5)
+    return (row, column)
+
 
 def players_choice():
+    """
+    player choice of row and column
+    """
     your_choice_row = input('Choose your row: ')
     your_choice_column = input('Choose your column: ')
     row_choice = int(your_choice_row)
@@ -25,26 +38,43 @@ def players_choice():
     
 
 def computers_choice():
-    comp_choice_row = random.randint(1,5)
-    comp_choice_column = random.randint(1,5)
-    comp_coordinates = comp_choice_row, comp_choice_column
-    for comp_coordinate in comp_coordinates:
-        print(comp_coordinate)
+    """
+    computers choice of coordinates to hit the boat
+    """
+    comp_coordinates = generate_random_coordinate()
+    print(comp_coordinates)
     return comp_coordinates
 
 def players_ship():
-    players_ship_row = random.randint(1,5) 
-    players_ship_column = random.randint(1,5) 
-    players_ship_coordinates = players_ship_row, players_ship_column
+    """
+    players ship coordinates
+    """
+    players_ship_coordinates = generate_random_coordinate()
     print(players_ship_coordinates)
     return players_ship_coordinates
 
 def computer_ship():
-    computer_ship_row = random.randint(1,8)
-    computer_ship_column = random.randint(1,8)
-    computer_ship_coordinates = computer_ship_row, computer_ship_column
+    """
+    computer ship coordinates
+    """
+    computer_ship_coordinates = generate_random_coordinate()
     print(computer_ship_coordinates)
     return computer_ship_coordinates
+
+def generate_ship_coordinates():
+    coordinates_list = []
+    for x in range(0,5):
+        ship_coordinates = generate_random_coordinate()
+        coordinates_list.append(ship_coordinates)
+    print(coordinates_list)
+    return coordinates_list
+
+def mark_board_with_ship_coordinates():
+    global board
+    coordinates_list = generate_ship_coordinates()
+    for coordinate in coordinates_list:
+        row, column = coordinate
+        board[row-1][column-1] = '@'
 
 
 
@@ -63,13 +93,16 @@ def players_turn(players_shot, computer_coordinates):
             break
         else:
             print("miss!!")
+            break
 
-            
+mark_board_with_ship_coordinates()            
 print_board(board)
+generate_random_coordinate()
 players_shot = players_choice()  
 computer_coordinates = computer_ship()
 computer_shot = computers_choice()
 players_coordinate = players_ship()
+generate_ship_coordinates()
 players_turn(players_shot, computer_coordinates)
 
 
@@ -82,4 +115,3 @@ players_turn(players_shot, computer_coordinates)
 
 # board()
 # random_spot = random_coordinate()
-

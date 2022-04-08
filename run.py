@@ -17,7 +17,7 @@ def print_board(board):
 
 def generate_random_coordinate():
     """
-    Generates random coordinates
+    Generates 2 random coordinates
     """
     row = random.randint(1,5)
     column = random.randint(1,5)
@@ -33,7 +33,7 @@ def players_choice():
     row_choice = int(your_choice_row)
     column_choice = int(your_choice_column)
     your_coordinates = row_choice, column_choice
-    print(your_coordinates)
+    print(f'your shot:{your_coordinates}')
     return your_coordinates
     
 
@@ -42,24 +42,24 @@ def computers_choice():
     computers choice of coordinates to hit the boat
     """
     comp_coordinates = generate_random_coordinate()
-    print(comp_coordinates)
+    print(f'comps Shot :{comp_coordinates}')
     return comp_coordinates
 
-def players_ship():
-    """
-    players ship coordinates
-    """
-    players_ship_coordinates = generate_random_coordinate()
-    print(players_ship_coordinates)
-    return players_ship_coordinates
+# def players_ship():
+#     """
+#     players ship coordinates
+#     """
+#     players_ship_coordinates = generate_random_coordinate()
+#     print(players_ship_coordinates)
+#     return players_ship_coordinates
 
-def computer_ship():
-    """
-    computer ship coordinates
-    """
-    computer_ship_coordinates = generate_random_coordinate()
-    print(computer_ship_coordinates)
-    return computer_ship_coordinates
+# def computer_ship():
+#     """
+#     computer ship coordinates
+#     """
+#     computer_ship_coordinates = generate_random_coordinate()
+#     print(computer_ship_coordinates)
+#     return computer_ship_coordinates
 
 def generate_ship_coordinates():
     coordinates_list = []
@@ -87,7 +87,7 @@ def players_turn(players_shot, computer_coordinates):
     
         if players_shot in comp_coordinates:
             score += 1
-            print("one ship Down!")
+            print("Ship Down!")
         elif score == 5:
             print('you Win!')
             break
@@ -95,13 +95,19 @@ def players_turn(players_shot, computer_coordinates):
             print("miss!!")
             break
 
-mark_board_with_ship_coordinates()            
+def computers_turn():
+    if computer_shot in computers_coordinates:
+        print("Ship down")
+    else:
+        print("miss")
+
+computers_coordinates = mark_board_with_ship_coordinates()     
 print_board(board)
 generate_random_coordinate()
 players_shot = players_choice()  
-computer_coordinates = computer_ship()
+# computer_coordinates = computer_ship()
 computer_shot = computers_choice()
-players_coordinate = players_ship()
+# players_coordinate = players_ship()
 comp_coordinates = generate_ship_coordinates()
 players_turn(players_shot, comp_coordinates)
 

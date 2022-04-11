@@ -111,28 +111,28 @@ def mark_board_with_computer_hits():
 
 def players_turn(players_shot, computer_coordinates):
     score = 0
-    score_max = 5
-    while (score < 5):
+    score_max = 5 - 1
+    while score < 5 - 1:
         if players_shot in comp_coordinates:
                 score += 1
                 print_board(board)
                 print_board(computer_board)
                 print("computer Ship Down!")
                 print(f'score:{score}')
-                print(computer_shot)
+                computers_choice()
                 players_choice()
-                
-                
-        elif score >= 5:
-            print(f'score:{score}')
-            print('you Win!')
-            break
         else:
-            print("computer ship missed!!")
-            print(f'score:{score}')
-            players_choice()
-    print_board(board)
-    print_board(computer_board)        
+            print("miss!")
+            players_turn(players_shot, computer_coordinates)
+                
+    if score == 5 :
+        
+        print(f'score:{score}')
+        print('you Win!')
+    
+        
+    # print_board(board)
+    # print_board(computer_board)        
             
 
 # def computers_turn(computer_shot, my_ship_coordinates):
@@ -156,8 +156,8 @@ computer_shot = computers_choice()
 # players_coordinate = players_ship()
 players_turn(players_shot, comp_coordinates)
 # computers_turn(computer_shot, my_ship_coordinates)
-mark_board_with_computer_hits()
-count_hits(board)
+# mark_board_with_computer_hits()
+# count_hits(board)
 
 
 
